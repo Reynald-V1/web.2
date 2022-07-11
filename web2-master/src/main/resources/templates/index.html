@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Sapato</title>
+</head>
+<body>
+    <div th:replace="fragments/fragment::header"></div>
+
+    <table class="table table-striped table-sm">
+        <thead>
+        <tr>
+            <th> id </th>
+            <th>nome</th>
+            <th>marca</th>
+            <th>preço</th>
+            <th>tamanho</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="sapato: ${sapatos}" th:object="${sapato}">
+                <td th:text="*{id}"></td>
+                <td th:text="*{nome}"></td>
+                <td th:text="*{marca}"></td>
+                <td th:text="*{preco}"></td>
+                <td th:text="*{tamanho}">
+                <td><img width="100px" th:src="@{'/images/' + *{imageUri}}" alt="image"/>
+                <td> <a th:href="@{'/update/'+ *{id}}">Editar</a> </td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="text-align: center;">
+        <a href="/cadastra" type="button" class="btn btn-link" style="text-align: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+            </svg>
+        </a>
+    </div>
+
+</body>
+</html>
